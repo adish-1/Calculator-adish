@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page title</title>
+    <link rel="icon" href="data:,">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        function calcu(op)
+{
+    n1 = document.form1.num1.value;
+    n2 = document.form1.num2.value;
+
+    // validation
+    if(n1=="" || n2=="" || isNaN(n1) || isNaN(n2)) 
+    {
+        alert("Please enter valid numbers");
+        return;
+    }
+
+    n1 = Number(n1);
+    n2 = Number(n2);
+    let r = 0;
+
+    if(op === "+") r = n1 + n2;
+    else if(op === "-") r = n1 - n2;
+    else if(op === "×") r = n1 * n2;
+    else if(op === "÷")
+    {
+        if(n2 == 0)
+        {
+            alert("Cannot divide by 0");
+            return;
+        }
+        r = n1 / n2;
+    }
+
+    document.form1.result.value = r;
+}
+    </script>
+    
+    <style>
+        body {
+  background: linear-gradient(135deg,#3a0700,#fc210d,#f4aaff,#f7ce38);
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+fieldset {
+  width: 900px;
+height: auto;
+padding-bottom: 40px;
+ margin-top: 60px;
+  margin-left:20px;
+  background: linear-gradient(120deg, #1a1a1a, #602877, #770018);
+  background-size: 300% 300%;  
+  animation: RgbFlow 5s ease infinite alternate;
+  /* optional: hint the browser */
+  will-change: background-position;
+}
+
+@keyframes RgbFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* rest of your styles (unchanged) */
+h1 {
+  font-size: 130px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #00ff18;
+  text-shadow: 0 0 30px;
+}
+form { text-align: center; }
+input::placeholder {
+  color: #d9f400;
+  font-family: 'Poppins', sans-serif;
+}
+input[type=text] {
+  display: block;
+  margin: 10px auto;
+  width: 450px;
+  height: 200px;
+  letter-spacing: 3px;
+  background: linear-gradient(130deg,#2c4369,#bfeaff);
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bolder;
+  font-size: 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+input[type=text]:hover {
+  width: 460px;
+  height: 220px;
+  border-radius: 7px;
+}
+input[type=button] {
+  width: 140px;
+  height: 120px;
+  align-items: center;
+  font-size: 60px;
+  font-weight: bold;
+  background: linear-gradient(165deg,#1c5532,#55ff97);
+  border: none;
+  color: royalblue;
+  transition: all 0.4s ease;
+}
+input[type=button]:focus {
+  width: 150px;
+  height: 130px;
+  border-radius: 20px;
+}
+input[type=reset] {
+  width: 500px;
+  height: 100px;
+  background: #394088;
+  color: white;
+  font-weight: bold;
+  font-size: 60px;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 14px;
+  border: none;
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+input[type=reset]:focus {
+  width: 530px;
+  height: 120px;
+  border: 8px solid skyblue;
+}
+    </style>
+</head>
+<body>
+    <fieldset>
+    <h1>Calculator</h1>
+    <form name="form1">
+        <input type="text" name="num1" placeholder="First number"><br>
+        <input type="text" name="num2" placeholder="second number"><br>
+        <input type="text" name="result" readonly placeholder="result"><br><br>
+        
+        <input type="button" value="+" onclick="calcu('+')">&nbsp&nbsp&nbsp&nbsp
+        <input type="button" value="-" onclick="calcu('-')">&nbsp&nbsp&nbsp&nbsp
+      <input type="button" value="×" onclick="calcu('×')">&nbsp&nbsp&nbsp&nbsp
+        <input type="button" value="÷"
+ onclick="calcu('÷')">&nbsp&nbsp&nbsp&nbsp<br><br><br>
+ <input type="reset" value="Clear">
+    </form>
+    </fieldset>
+</body>
+</html>
